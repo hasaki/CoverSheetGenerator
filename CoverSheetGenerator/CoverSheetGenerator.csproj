@@ -47,6 +47,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Accessibility" />
     <Reference Include="GrapeCity.ActiveReports.Diagnostics.v7, Version=7.1.7470.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff">
       <Private>True</Private>
     </Reference>
@@ -54,6 +55,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="GrapeCity.ActiveReports.Export.Image.v7, Version=7.1.7470.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GrapeCity.ActiveReports.Export.Pdf.v7, Version=7.1.7470.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
     <Reference Include="GrapeCity.ActiveReports.Extensibility.v7, Version=7.1.7470.0, Culture=neutral, PublicKeyToken=cc4967777c49a3ff">
@@ -66,7 +70,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -78,6 +85,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CoverSheetData.cs" />
+    <Compile Include="CoverSheetJob.cs" />
+    <Compile Include="CoverSheetJobListViewItem.cs" />
     <Compile Include="CoverSheetReport.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -110,6 +119,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="SettingsDialog.resx">
       <DependentUpon>SettingsDialog.cs</DependentUpon>
@@ -148,6 +158,9 @@
       <ProductName>Windows Installer 4.5</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="gnome-mime-application-pdf.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

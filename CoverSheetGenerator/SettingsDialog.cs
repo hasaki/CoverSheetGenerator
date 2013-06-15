@@ -34,41 +34,48 @@ namespace CoverSheetGenerator
 		{
 			var sheetData = new List<CoverSheetData>();
 
-			var bundleSize = Convert.ToInt32(_bundleSize.Text);
-			var total = Convert.ToInt32(_total.Text);
-
-			var remaining = total;
-			while (remaining > 0)
+			foreach (CoverSheetJobListViewItem item in _jobsList.Items)
 			{
-				var data = new CoverSheetData()
-					{
-						City = _city.Text,
-						State = _state.Text,
-						Zip = _zip.Text,
-						JobName = _jobName.Text,
-						Route = _route.Text,
-						Total = total
-					};
-
-				var numInBundle = 0;
-
-				if (remaining > bundleSize + 15)
-				{
-					numInBundle = bundleSize;
-				}
-				else
-				{
-					numInBundle = remaining;
-				}
-
-				remaining -= numInBundle;
-
-				data.NumInBundle = numInBundle;
-
-				sheetData.Add(data);
+				sheetData.AddRange(item.Job.GetData());
 			}
 
 			return sheetData;
+		}
+
+		private void addJob_Click(object sender, EventArgs e)
+		{
+			var job = CreateJobFromData();
+
+			var item = new CoverSheetJobListViewItem(job);
+			_jobsList.Items.Add(item);
+		}
+
+		private CoverSheetJob CreateJobFromData()
+		{
+			var job = new CoverSheetJob();
+			job.City = _city.Text;
+			job.State = _state.Text;
+			job.Zip = _zip.Text;
+			job.JobName = _jobName.Text;
+			job.Route = _route.Text;
+			job.Total = Convert.ToInt32(_total.Text);
+			job.BundleSize = Convert.ToInt32(_bundleSize.Text);
+			return job;
+		}
+
+		private void _jobsList_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			removeJob.Enabled = _jobsList.SelectedItems.Count > 0;
+		}
+
+		private void removeJob_Click(object sender, EventArgs e)
+		{
+			while (_jobsList.SelectedItems.Count > 0)
+			{
+				var item = (CoverSheetJobListViewItem) _jobsList.SelectedItems[0];
+
+				item.Remove();
+			}
 		}
 	}
 }

@@ -43,6 +43,14 @@
 			this._jobName = new System.Windows.Forms.TextBox();
 			this.label7 = new System.Windows.Forms.Label();
 			this.generate = new System.Windows.Forms.Button();
+			this.label8 = new System.Windows.Forms.Label();
+			this._jobsList = new System.Windows.Forms.ListView();
+			this.addJob = new System.Windows.Forms.Button();
+			this.removeJob = new System.Windows.Forms.Button();
+			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.SuspendLayout();
 			// 
 			// label1
@@ -54,14 +62,14 @@
 			this.label1.TabIndex = 0;
 			this.label1.Text = "City:";
 			// 
-			// city
+			// _city
 			// 
 			this._city.Location = new System.Drawing.Point(45, 6);
 			this._city.Name = "_city";
 			this._city.Size = new System.Drawing.Size(183, 20);
 			this._city.TabIndex = 1;
 			// 
-			// state
+			// _state
 			// 
 			this._state.Location = new System.Drawing.Point(276, 6);
 			this._state.Name = "_state";
@@ -77,11 +85,11 @@
 			this.label2.TabIndex = 2;
 			this.label2.Text = "State:";
 			// 
-			// zip
+			// _zip
 			// 
 			this._zip.Location = new System.Drawing.Point(359, 6);
 			this._zip.Name = "_zip";
-			this._zip.Size = new System.Drawing.Size(67, 20);
+			this._zip.Size = new System.Drawing.Size(65, 20);
 			this._zip.TabIndex = 5;
 			// 
 			// label3
@@ -93,11 +101,11 @@
 			this.label3.TabIndex = 4;
 			this.label3.Text = "Zip:";
 			// 
-			// route
+			// _route
 			// 
 			this._route.Location = new System.Drawing.Point(57, 32);
 			this._route.Name = "_route";
-			this._route.Size = new System.Drawing.Size(369, 20);
+			this._route.Size = new System.Drawing.Size(367, 20);
 			this._route.TabIndex = 7;
 			// 
 			// label4
@@ -109,7 +117,7 @@
 			this.label4.TabIndex = 6;
 			this.label4.Text = "Route:";
 			// 
-			// total
+			// _total
 			// 
 			this._total.Location = new System.Drawing.Point(52, 71);
 			this._total.Name = "_total";
@@ -125,7 +133,7 @@
 			this.label5.TabIndex = 8;
 			this.label5.Text = "Total:";
 			// 
-			// bundleSize
+			// _bundleSize
 			// 
 			this._bundleSize.Location = new System.Drawing.Point(193, 71);
 			this._bundleSize.Name = "_bundleSize";
@@ -141,11 +149,11 @@
 			this.label6.TabIndex = 10;
 			this.label6.Text = "Bundle Size:";
 			// 
-			// jobName
+			// _jobName
 			// 
 			this._jobName.Location = new System.Drawing.Point(76, 119);
 			this._jobName.Name = "_jobName";
-			this._jobName.Size = new System.Drawing.Size(350, 20);
+			this._jobName.Size = new System.Drawing.Size(348, 20);
 			this._jobName.TabIndex = 13;
 			// 
 			// label7
@@ -159,7 +167,8 @@
 			// 
 			// generate
 			// 
-			this.generate.Location = new System.Drawing.Point(351, 177);
+			this.generate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.generate.Location = new System.Drawing.Point(850, 241);
 			this.generate.Name = "generate";
 			this.generate.Size = new System.Drawing.Size(75, 23);
 			this.generate.TabIndex = 14;
@@ -167,11 +176,83 @@
 			this.generate.UseVisualStyleBackColor = true;
 			this.generate.Click += new System.EventHandler(this.generate_Click);
 			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(513, 9);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(32, 13);
+			this.label8.TabIndex = 15;
+			this.label8.Text = "Jobs:";
+			// 
+			// _jobsList
+			// 
+			this._jobsList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this._jobsList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader3,
+            this.columnHeader2,
+            this.columnHeader1,
+            this.columnHeader4});
+			this._jobsList.FullRowSelect = true;
+			this._jobsList.Location = new System.Drawing.Point(513, 25);
+			this._jobsList.Name = "_jobsList";
+			this._jobsList.Size = new System.Drawing.Size(412, 198);
+			this._jobsList.TabIndex = 16;
+			this._jobsList.UseCompatibleStateImageBehavior = false;
+			this._jobsList.View = System.Windows.Forms.View.Details;
+			this._jobsList.SelectedIndexChanged += new System.EventHandler(this._jobsList_SelectedIndexChanged);
+			// 
+			// addJob
+			// 
+			this.addJob.Location = new System.Drawing.Point(432, 74);
+			this.addJob.Name = "addJob";
+			this.addJob.Size = new System.Drawing.Size(75, 23);
+			this.addJob.TabIndex = 17;
+			this.addJob.Text = "&Add Job";
+			this.addJob.UseVisualStyleBackColor = true;
+			this.addJob.Click += new System.EventHandler(this.addJob_Click);
+			// 
+			// removeJob
+			// 
+			this.removeJob.Enabled = false;
+			this.removeJob.Location = new System.Drawing.Point(432, 139);
+			this.removeJob.Name = "removeJob";
+			this.removeJob.Size = new System.Drawing.Size(75, 23);
+			this.removeJob.TabIndex = 18;
+			this.removeJob.Text = "&Remove Job";
+			this.removeJob.UseVisualStyleBackColor = true;
+			this.removeJob.Click += new System.EventHandler(this.removeJob_Click);
+			// 
+			// columnHeader1
+			// 
+			this.columnHeader1.Text = "Job";
+			this.columnHeader1.Width = 90;
+			// 
+			// columnHeader2
+			// 
+			this.columnHeader2.Text = "Route";
+			// 
+			// columnHeader3
+			// 
+			this.columnHeader3.Text = "City/State/Zip";
+			this.columnHeader3.Width = 154;
+			// 
+			// columnHeader4
+			// 
+			this.columnHeader4.Text = "Total/Bundle Size";
+			this.columnHeader4.Width = 99;
+			// 
 			// SettingsDialog
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(436, 212);
+			this.ClientSize = new System.Drawing.Size(937, 275);
+			this.Controls.Add(this.removeJob);
+			this.Controls.Add(this.addJob);
+			this.Controls.Add(this._jobsList);
+			this.Controls.Add(this.label8);
 			this.Controls.Add(this.generate);
 			this.Controls.Add(this._jobName);
 			this.Controls.Add(this.label7);
@@ -212,6 +293,14 @@
 		private System.Windows.Forms.TextBox _jobName;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Button generate;
+		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.ListView _jobsList;
+		private System.Windows.Forms.ColumnHeader columnHeader3;
+		private System.Windows.Forms.ColumnHeader columnHeader2;
+		private System.Windows.Forms.ColumnHeader columnHeader1;
+		private System.Windows.Forms.ColumnHeader columnHeader4;
+		private System.Windows.Forms.Button addJob;
+		private System.Windows.Forms.Button removeJob;
 	}
 }
 

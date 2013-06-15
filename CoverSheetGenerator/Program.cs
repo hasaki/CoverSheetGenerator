@@ -1,4 +1,7 @@
-﻿using System;
+﻿//
+// PDF Document icon is used under the LGPL 2.1 and provided by http://nuovext.pwsp.net/ 
+//
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;

@@ -44,6 +44,7 @@ namespace CoverSheetGenerator
 			// 
 			// detail
 			// 
+			this.detail.CanGrow = false;
 			this.detail.Controls.AddRange(new GrapeCity.ActiveReports.SectionReportModel.ARControl[] {
             this.classification,
             this.cityStateZip,
@@ -52,7 +53,7 @@ namespace CoverSheetGenerator
             this.totalPapers,
             this.jobName,
             this.line1});
-			this.detail.Height = 3F;
+			this.detail.Height = 3.5F;
 			this.detail.KeepTogether = true;
 			this.detail.Name = "detail";
 			this.detail.Format += new System.EventHandler(this.detail_Format);
@@ -68,7 +69,7 @@ namespace CoverSheetGenerator
 			this.classification.Style = "font-family: Arial; vertical-align: middle; ddo-char-set: 1; ddo-shrink-to-fit: t" +
     "rue";
 			this.classification.Text = "ECR/WSS";
-			this.classification.Top = 0F;
+			this.classification.Top = 0.2500002F;
 			this.classification.Width = 2.25F;
 			// 
 			// cityStateZip
@@ -83,7 +84,7 @@ namespace CoverSheetGenerator
 			this.cityStateZip.Style = "font-family: Arial; text-align: center; vertical-align: middle; ddo-char-set: 1; " +
     "ddo-shrink-to-fit: true";
 			this.cityStateZip.Text = "CITY STATE ZIP";
-			this.cityStateZip.Top = 0.5F;
+			this.cityStateZip.Top = 0.7500002F;
 			this.cityStateZip.Width = 6.5F;
 			// 
 			// route
@@ -98,7 +99,7 @@ namespace CoverSheetGenerator
 			this.route.Style = "font-family: Arial; text-align: center; vertical-align: middle; ddo-char-set: 1; " +
     "ddo-shrink-to-fit: true";
 			this.route.Text = "Route";
-			this.route.Top = 1.125F;
+			this.route.Top = 1.375F;
 			this.route.Width = 6.5F;
 			// 
 			// numInBundle
@@ -113,14 +114,14 @@ namespace CoverSheetGenerator
 			this.numInBundle.Style = "font-family: Arial; text-align: center; vertical-align: middle; ddo-char-set: 1; " +
     "ddo-shrink-to-fit: true";
 			this.numInBundle.Text = "NumInBundle";
-			this.numInBundle.Top = 1.812F;
+			this.numInBundle.Top = 2.062F;
 			this.numInBundle.Width = 6.5F;
 			// 
 			// totalPapers
 			// 
 			this.totalPapers.CanGrow = false;
 			this.totalPapers.ClassName = "Heading1";
-			this.totalPapers.DataField = "totalPapers";
+			this.totalPapers.DataField = "Total";
 			this.totalPapers.Height = 0.5F;
 			this.totalPapers.Left = 3.937F;
 			this.totalPapers.Name = "totalPapers";
@@ -128,7 +129,7 @@ namespace CoverSheetGenerator
 			this.totalPapers.Style = "font-family: Arial; text-align: right; vertical-align: middle; ddo-char-set: 1; d" +
     "do-shrink-to-fit: true";
 			this.totalPapers.Text = "Total Papers";
-			this.totalPapers.Top = 0F;
+			this.totalPapers.Top = 0.2500002F;
 			this.totalPapers.Width = 2.563F;
 			// 
 			// jobName
@@ -143,7 +144,7 @@ namespace CoverSheetGenerator
 			this.jobName.Style = "font-family: Arial; vertical-align: middle; ddo-char-set: 1; ddo-shrink-to-fit: t" +
     "rue";
 			this.jobName.Text = "Job Name";
-			this.jobName.Top = 2.5F;
+			this.jobName.Top = 2.75F;
 			this.jobName.Width = 6.5F;
 			// 
 			// line1
@@ -152,12 +153,12 @@ namespace CoverSheetGenerator
 			this.line1.Left = 0F;
 			this.line1.LineWeight = 1F;
 			this.line1.Name = "line1";
-			this.line1.Top = 3F;
+			this.line1.Top = 3.5F;
 			this.line1.Width = 6.5F;
 			this.line1.X1 = 0F;
 			this.line1.X2 = 6.5F;
-			this.line1.Y1 = 3F;
-			this.line1.Y2 = 3F;
+			this.line1.Y1 = 3.5F;
+			this.line1.Y2 = 3.5F;
 			// 
 			// CoverSheetReport
 			// 
@@ -168,7 +169,6 @@ namespace CoverSheetGenerator
 			this.PageSettings.Margins.Top = 0.25F;
 			this.PageSettings.PaperHeight = 11F;
 			this.PageSettings.PaperWidth = 8.5F;
-			this.PrintWidth = 6.5F;
 			this.Sections.Add(this.detail);
 			this.StyleSheet.Add(new DDCssLib.StyleSheetRule("font-family: Arial; font-style: normal; text-decoration: none; font-weight: norma" +
             "l; font-size: 10pt; color: Black; ddo-char-set: 186", "Normal"));
@@ -177,6 +177,8 @@ namespace CoverSheetGenerator
 			this.StyleSheet.Add(new DDCssLib.StyleSheetRule("font-family: Times New Roman; font-size: 14pt; font-weight: bold; font-style: ita" +
             "lic", "Heading2", "Normal"));
 			this.StyleSheet.Add(new DDCssLib.StyleSheetRule("font-size: 13pt; font-weight: bold", "Heading3", "Normal"));
+			this.PageStart += new System.EventHandler(this.CoverSheetReport_PageStart);
+			this.PageEnd += new System.EventHandler(this.CoverSheetReport_PageEnd);
 			((System.ComponentModel.ISupportInitialize)(this.classification)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.cityStateZip)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.route)).EndInit();
